@@ -7,11 +7,13 @@ Pod::Spec.new do |s|
   s.description  = "同步更新EasyAR庫"
 
   s.homepage     = "https://github.com/money150604/EasyARSDK"
-  s.license      = "MIT (example)"
+  s.license      = "MIT"
 
   s.platform     = :ios
   s.ios.deployment_target = "9.0"
-  s.source       = { :git => "https://github.com/money150604/EasyARSDK", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/money150604/EasyARSDK.git", :tag => "#{s.version}" }
+
+  s.authors  = { 'easyar' => 'support@easyar.comm' }
 
   s.frameworks = "Accelerate", "GLKit", "AVFoundation", "CoreGraphics", "CoreImage", "CoreMedia", "CoreVideo", "OpenGLES", "QuartzCore", "UIKit", "CoreMotion"
   s.resources    = 'Sources/*'
