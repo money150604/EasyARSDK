@@ -2,7 +2,8 @@ Pod::Spec.new do |s|
 
   s.name         = "EasyARSDK"
   s.version      = "0.0.1"
-  s.description  = "同步更新EasyAR庫"
+  s.summary      = "EasyARSDK."
+  s.description  = "同步更新EasyAR庫."
 
   s.homepage     = "https://github.com/money150604/EasyARSDK"
   s.license      = "MIT"
