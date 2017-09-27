@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.authors  = { 'easyar' => 'support@easyar.comm' }
 
   s.frameworks = "Accelerate", "GLKit", "AVFoundation", "CoreGraphics", "CoreImage", "CoreMedia", "CoreVideo", "OpenGLES", "QuartzCore", "UIKit", "CoreMotion"
-  s.source_files    = 'Sources/*'
+  s.vendored_frameworks = 'EasyARSDK/Sources/easyar.framework'
   s.libraries = 'c++'
   s.requires_arc = true
 
