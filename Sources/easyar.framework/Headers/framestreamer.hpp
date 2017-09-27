@@ -1,6 +1,6 @@
 //=============================================================================================================================
 //
-// EasyAR 2.0.0
+// EasyAR 2.1.0
 // Copyright (c) 2015-2017 VisionStar Information Technology (Shanghai) Co., Ltd. All Rights Reserved.
 // EasyAR is the registered trademark or trademark of VisionStar Information Technology (Shanghai) Co., Ltd in China
 // and other countries for the augmented reality technology developed by VisionStar Information Technology (Shanghai) Co., Ltd.
@@ -44,7 +44,6 @@ public:
     std::shared_ptr<easyar_CameraFrameStreamer> get_cdata();
 
     CameraFrameStreamer();
-    std::string typeName();
     bool attachCamera(std::shared_ptr<CameraDevice> obj);
     std::shared_ptr<Frame> peek();
     bool start();
@@ -97,32 +96,17 @@ inline void FrameStreamer::init_cdata(std::shared_ptr<easyar_FrameStreamer> cdat
 inline std::shared_ptr<Frame> FrameStreamer::peek()
 {
     easyar_Frame * _return_value_;
-    easyar_clearException();
     easyar_FrameStreamer_peek(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return (_return_value_ == nullptr ? nullptr : std::make_shared<Frame>(std::shared_ptr<easyar_Frame>(_return_value_, [](easyar_Frame * ptr) { easyar_Frame__dtor(ptr); })));
 }
 inline bool FrameStreamer::start()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_FrameStreamer_start(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline bool FrameStreamer::stop()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_FrameStreamer_stop(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 
@@ -157,64 +141,28 @@ inline CameraFrameStreamer::CameraFrameStreamer()
     cdata_(nullptr)
 {
     easyar_CameraFrameStreamer * _return_value_;
-    easyar_clearException();
     easyar_CameraFrameStreamer__ctor(&_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     init_cdata(std::shared_ptr<easyar_CameraFrameStreamer>(_return_value_, [](easyar_CameraFrameStreamer * ptr) { easyar_CameraFrameStreamer__dtor(ptr); }));
-}
-inline std::string CameraFrameStreamer::typeName()
-{
-    easyar_String * _return_value_;
-    easyar_clearException();
-    easyar_CameraFrameStreamer_typeName(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
-    return std_string_from_easyar_String(std::shared_ptr<easyar_String>(_return_value_, [](easyar_String * ptr) { easyar_String__dtor(ptr); }));
 }
 inline bool CameraFrameStreamer::attachCamera(std::shared_ptr<CameraDevice> arg0)
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraFrameStreamer_attachCamera(cdata_.get(), (arg0 == nullptr ? nullptr : arg0->get_cdata().get()));
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline std::shared_ptr<Frame> CameraFrameStreamer::peek()
 {
     easyar_Frame * _return_value_;
-    easyar_clearException();
     easyar_CameraFrameStreamer_peek(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return (_return_value_ == nullptr ? nullptr : std::make_shared<Frame>(std::shared_ptr<easyar_Frame>(_return_value_, [](easyar_Frame * ptr) { easyar_Frame__dtor(ptr); })));
 }
 inline bool CameraFrameStreamer::start()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraFrameStreamer_start(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline bool CameraFrameStreamer::stop()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraFrameStreamer_stop(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline std::shared_ptr<CameraFrameStreamer> CameraFrameStreamer::tryCastFromFrameStreamer(std::shared_ptr<FrameStreamer> v)

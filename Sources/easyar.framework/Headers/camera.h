@@ -1,6 +1,6 @@
 //=============================================================================================================================
 //
-// EasyAR 2.0.0
+// EasyAR 2.1.0
 // Copyright (c) 2015-2017 VisionStar Information Technology (Shanghai) Co., Ltd. All Rights Reserved.
 // EasyAR is the registered trademark or trademark of VisionStar Information Technology (Shanghai) Co., Ltd in China
 // and other countries for the augmented reality technology developed by VisionStar Information Technology (Shanghai) Co., Ltd.
@@ -17,7 +17,6 @@ extern "C" {
 #endif
 
 void easyar_CameraCalibration__ctor(/* OUT */ easyar_CameraCalibration * * Return);
-void easyar_CameraCalibration_typeName(const easyar_CameraCalibration * This, /* OUT */ easyar_String * * Return);
 easyar_Vec2I easyar_CameraCalibration_size(const easyar_CameraCalibration * This);
 easyar_Vec2F easyar_CameraCalibration_focalLength(const easyar_CameraCalibration * This);
 easyar_Vec2F easyar_CameraCalibration_principalPoint(const easyar_CameraCalibration * This);
@@ -26,9 +25,9 @@ int easyar_CameraCalibration_rotation(const easyar_CameraCalibration * This);
 easyar_Matrix44F easyar_CameraCalibration_projectionGL(easyar_CameraCalibration * This, float nearPlane, float farPlane);
 void easyar_CameraCalibration__dtor(easyar_CameraCalibration * This);
 void easyar_CameraCalibration__retain(const easyar_CameraCalibration * This, /* OUT */ easyar_CameraCalibration * * Return);
+const char * easyar_CameraCalibration__typeName(const easyar_CameraCalibration * This);
 
 void easyar_CameraDevice__ctor(/* OUT */ easyar_CameraDevice * * Return);
-void easyar_CameraDevice_typeName(const easyar_CameraDevice * This, /* OUT */ easyar_String * * Return);
 bool easyar_CameraDevice_start(easyar_CameraDevice * This);
 bool easyar_CameraDevice_stop(easyar_CameraDevice * This);
 void easyar_CameraDevice_requestPermissions(easyar_CameraDevice * This, easyar_FunctorOfVoidFromPermissionStatusAndString permissionCallback);
@@ -54,6 +53,7 @@ bool easyar_CameraDevice_setFocusMode(easyar_CameraDevice * This, easyar_CameraD
 easyar_Matrix44F easyar_CameraDevice_projectionGL(easyar_CameraDevice * This, float nearPlane, float farPlane);
 void easyar_CameraDevice__dtor(easyar_CameraDevice * This);
 void easyar_CameraDevice__retain(const easyar_CameraDevice * This, /* OUT */ easyar_CameraDevice * * Return);
+const char * easyar_CameraDevice__typeName(const easyar_CameraDevice * This);
 
 #ifdef __cplusplus
 }

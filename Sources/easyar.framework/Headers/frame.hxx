@@ -1,6 +1,6 @@
 //=============================================================================================================================
 //
-// EasyAR 2.0.0
+// EasyAR 2.1.0
 // Copyright (c) 2015-2017 VisionStar Information Technology (Shanghai) Co., Ltd. All Rights Reserved.
 // EasyAR is the registered trademark or trademark of VisionStar Information Technology (Shanghai) Co., Ltd in China
 // and other countries for the augmented reality technology developed by VisionStar Information Technology (Shanghai) Co., Ltd.
@@ -30,7 +30,6 @@ public:
     easyar_Frame * get_cdata();
 
     Frame();
-    void typeName(/* OUT */ String * * Return);
     Vec2I size();
     double timestamp();
     int index();
@@ -146,16 +145,6 @@ inline Frame::Frame()
     easyar_Frame * _return_value_ = NULL;
     easyar_Frame__ctor(&_return_value_);
     init_cdata(_return_value_);
-}
-inline void Frame::typeName(/* OUT */ String * * Return)
-{
-    if (cdata_ == NULL) {
-        *Return = NULL;
-        return;
-    }
-    easyar_String * _return_value_ = NULL;
-    easyar_Frame_typeName(cdata_, &_return_value_);
-    *Return = (_return_value_) == NULL ? NULL : new String(_return_value_);
 }
 inline Vec2I Frame::size()
 {

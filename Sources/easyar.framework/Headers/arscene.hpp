@@ -1,6 +1,6 @@
 //=============================================================================================================================
 //
-// EasyAR 2.0.0
+// EasyAR 2.1.0
 // Copyright (c) 2015-2017 VisionStar Information Technology (Shanghai) Co., Ltd. All Rights Reserved.
 // EasyAR is the registered trademark or trademark of VisionStar Information Technology (Shanghai) Co., Ltd in China
 // and other countries for the augmented reality technology developed by VisionStar Information Technology (Shanghai) Co., Ltd.
@@ -28,7 +28,6 @@ public:
     std::shared_ptr<easyar_ARScene> get_cdata();
 
     ARScene();
-    std::string typeName();
     int runtimeID();
     std::string uid();
     std::string name();
@@ -90,75 +89,35 @@ inline ARScene::ARScene()
     cdata_(nullptr)
 {
     easyar_ARScene * _return_value_;
-    easyar_clearException();
     easyar_ARScene__ctor(&_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     init_cdata(std::shared_ptr<easyar_ARScene>(_return_value_, [](easyar_ARScene * ptr) { easyar_ARScene__dtor(ptr); }));
-}
-inline std::string ARScene::typeName()
-{
-    easyar_String * _return_value_;
-    easyar_clearException();
-    easyar_ARScene_typeName(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
-    return std_string_from_easyar_String(std::shared_ptr<easyar_String>(_return_value_, [](easyar_String * ptr) { easyar_String__dtor(ptr); }));
 }
 inline int ARScene::runtimeID()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_ARScene_runtimeID(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline std::string ARScene::uid()
 {
     easyar_String * _return_value_;
-    easyar_clearException();
     easyar_ARScene_uid(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return std_string_from_easyar_String(std::shared_ptr<easyar_String>(_return_value_, [](easyar_String * ptr) { easyar_String__dtor(ptr); }));
 }
 inline std::string ARScene::name()
 {
     easyar_String * _return_value_;
-    easyar_clearException();
     easyar_ARScene_name(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return std_string_from_easyar_String(std::shared_ptr<easyar_String>(_return_value_, [](easyar_String * ptr) { easyar_String__dtor(ptr); }));
 }
 inline std::string ARScene::meta()
 {
     easyar_String * _return_value_;
-    easyar_clearException();
     easyar_ARScene_meta(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return std_string_from_easyar_String(std::shared_ptr<easyar_String>(_return_value_, [](easyar_String * ptr) { easyar_String__dtor(ptr); }));
 }
 inline void ARScene::setMeta(std::string arg0)
 {
     easyar_ARScene_setMeta(cdata_.get(), std_string_to_easyar_String(arg0).get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
 }
 inline std::shared_ptr<ARScene> ARScene::tryCastFromTarget(std::shared_ptr<Target> v)
 {

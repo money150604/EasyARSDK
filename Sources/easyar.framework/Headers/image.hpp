@@ -1,6 +1,6 @@
 //=============================================================================================================================
 //
-// EasyAR 2.0.0
+// EasyAR 2.1.0
 // Copyright (c) 2015-2017 VisionStar Information Technology (Shanghai) Co., Ltd. All Rights Reserved.
 // EasyAR is the registered trademark or trademark of VisionStar Information Technology (Shanghai) Co., Ltd in China
 // and other countries for the augmented reality technology developed by VisionStar Information Technology (Shanghai) Co., Ltd.
@@ -26,17 +26,15 @@ public:
 
     std::shared_ptr<easyar_Image> get_cdata();
 
-    Image();
-    std::string typeName();
+    std::shared_ptr<Buffer> buffer();
+    PixelFormat format();
     int width();
     int height();
     int stride();
-    PixelFormat format();
     void * data();
 };
 
 }
-
 
 #endif
 
@@ -44,6 +42,7 @@ public:
 #define __IMPLEMENTATION_EASYAR_IMAGE_HPP__
 
 #include "easyar/image.h"
+#include "easyar/buffer.hpp"
 
 namespace easyar {
 
@@ -66,78 +65,35 @@ inline void Image::init_cdata(std::shared_ptr<easyar_Image> cdata)
 {
     cdata_ = cdata;
 }
-inline Image::Image()
-    :
-    cdata_(nullptr)
+inline std::shared_ptr<Buffer> Image::buffer()
 {
-    easyar_Image * _return_value_;
-    easyar_clearException();
-    easyar_Image__ctor(&_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
-    init_cdata(std::shared_ptr<easyar_Image>(_return_value_, [](easyar_Image * ptr) { easyar_Image__dtor(ptr); }));
+    easyar_Buffer * _return_value_;
+    easyar_Image_buffer(cdata_.get(), &_return_value_);
+    return (_return_value_ == nullptr ? nullptr : std::make_shared<Buffer>(std::shared_ptr<easyar_Buffer>(_return_value_, [](easyar_Buffer * ptr) { easyar_Buffer__dtor(ptr); })));
 }
-inline std::string Image::typeName()
+inline PixelFormat Image::format()
 {
-    easyar_String * _return_value_;
-    easyar_clearException();
-    easyar_Image_typeName(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
-    return std_string_from_easyar_String(std::shared_ptr<easyar_String>(_return_value_, [](easyar_String * ptr) { easyar_String__dtor(ptr); }));
+    auto _return_value_ = easyar_Image_format(cdata_.get());
+    return static_cast<PixelFormat>(_return_value_);
 }
 inline int Image::width()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_Image_width(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline int Image::height()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_Image_height(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline int Image::stride()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_Image_stride(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
-}
-inline PixelFormat Image::format()
-{
-    easyar_clearException();
-    auto _return_value_ = easyar_Image_format(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
-    return static_cast<PixelFormat>(_return_value_);
 }
 inline void * Image::data()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_Image_data(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 

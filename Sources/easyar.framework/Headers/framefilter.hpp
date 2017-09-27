@@ -1,6 +1,6 @@
 //=============================================================================================================================
 //
-// EasyAR 2.0.0
+// EasyAR 2.1.0
 // Copyright (c) 2015-2017 VisionStar Information Technology (Shanghai) Co., Ltd. All Rights Reserved.
 // EasyAR is the registered trademark or trademark of VisionStar Information Technology (Shanghai) Co., Ltd in China
 // and other countries for the augmented reality technology developed by VisionStar Information Technology (Shanghai) Co., Ltd.
@@ -33,7 +33,6 @@ public:
 
 }
 
-
 #endif
 
 #ifndef __IMPLEMENTATION_EASYAR_FRAMEFILTER_HPP__
@@ -65,32 +64,17 @@ inline void FrameFilter::init_cdata(std::shared_ptr<easyar_FrameFilter> cdata)
 }
 inline bool FrameFilter::attachStreamer(std::shared_ptr<FrameStreamer> arg0)
 {
-    easyar_clearException();
     auto _return_value_ = easyar_FrameFilter_attachStreamer(cdata_.get(), (arg0 == nullptr ? nullptr : arg0->get_cdata().get()));
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline bool FrameFilter::start()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_FrameFilter_start(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline bool FrameFilter::stop()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_FrameFilter_stop(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 

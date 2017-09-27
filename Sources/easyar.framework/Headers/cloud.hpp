@@ -1,6 +1,6 @@
 //=============================================================================================================================
 //
-// EasyAR 2.0.0
+// EasyAR 2.1.0
 // Copyright (c) 2015-2017 VisionStar Information Technology (Shanghai) Co., Ltd. All Rights Reserved.
 // EasyAR is the registered trademark or trademark of VisionStar Information Technology (Shanghai) Co., Ltd in China
 // and other countries for the augmented reality technology developed by VisionStar Information Technology (Shanghai) Co., Ltd.
@@ -28,7 +28,6 @@ public:
     std::shared_ptr<easyar_CloudRecognizer> get_cdata();
 
     CloudRecognizer();
-    std::string typeName();
     void open(std::string server, std::string appKey, std::string appSecret, std::function<void(CloudStatus)> callback_open, std::function<void(CloudStatus, std::vector<std::shared_ptr<Target>>)> callback_recognize);
     bool close();
     bool attachStreamer(std::shared_ptr<FrameStreamer> obj);
@@ -112,71 +111,31 @@ inline CloudRecognizer::CloudRecognizer()
     cdata_(nullptr)
 {
     easyar_CloudRecognizer * _return_value_;
-    easyar_clearException();
     easyar_CloudRecognizer__ctor(&_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     init_cdata(std::shared_ptr<easyar_CloudRecognizer>(_return_value_, [](easyar_CloudRecognizer * ptr) { easyar_CloudRecognizer__dtor(ptr); }));
-}
-inline std::string CloudRecognizer::typeName()
-{
-    easyar_String * _return_value_;
-    easyar_clearException();
-    easyar_CloudRecognizer_typeName(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
-    return std_string_from_easyar_String(std::shared_ptr<easyar_String>(_return_value_, [](easyar_String * ptr) { easyar_String__dtor(ptr); }));
 }
 inline void CloudRecognizer::open(std::string arg0, std::string arg1, std::string arg2, std::function<void(CloudStatus)> arg3, std::function<void(CloudStatus, std::vector<std::shared_ptr<Target>>)> arg4)
 {
     easyar_CloudRecognizer_open(cdata_.get(), std_string_to_easyar_String(arg0).get(), std_string_to_easyar_String(arg1).get(), std_string_to_easyar_String(arg2).get(), FunctorOfVoidFromCloudStatus_to_c(arg3), FunctorOfVoidFromCloudStatusAndListOfPointerOfTarget_to_c(arg4));
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
 }
 inline bool CloudRecognizer::close()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CloudRecognizer_close(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline bool CloudRecognizer::attachStreamer(std::shared_ptr<FrameStreamer> arg0)
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CloudRecognizer_attachStreamer(cdata_.get(), (arg0 == nullptr ? nullptr : arg0->get_cdata().get()));
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline bool CloudRecognizer::start()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CloudRecognizer_start(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline bool CloudRecognizer::stop()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CloudRecognizer_stop(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline std::shared_ptr<CloudRecognizer> CloudRecognizer::tryCastFromFrameFilter(std::shared_ptr<FrameFilter> v)

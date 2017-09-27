@@ -1,6 +1,6 @@
 //=============================================================================================================================
 //
-// EasyAR 2.0.0
+// EasyAR 2.1.0
 // Copyright (c) 2015-2017 VisionStar Information Technology (Shanghai) Co., Ltd. All Rights Reserved.
 // EasyAR is the registered trademark or trademark of VisionStar Information Technology (Shanghai) Co., Ltd in China
 // and other countries for the augmented reality technology developed by VisionStar Information Technology (Shanghai) Co., Ltd.
@@ -28,7 +28,6 @@ public:
     std::shared_ptr<easyar_ARSceneTracker> get_cdata();
 
     ARSceneTracker();
-    std::string typeName();
     bool attachStreamer(std::shared_ptr<FrameStreamer> obj);
     bool start();
     bool stop();
@@ -89,53 +88,22 @@ inline ARSceneTracker::ARSceneTracker()
     cdata_(nullptr)
 {
     easyar_ARSceneTracker * _return_value_;
-    easyar_clearException();
     easyar_ARSceneTracker__ctor(&_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     init_cdata(std::shared_ptr<easyar_ARSceneTracker>(_return_value_, [](easyar_ARSceneTracker * ptr) { easyar_ARSceneTracker__dtor(ptr); }));
-}
-inline std::string ARSceneTracker::typeName()
-{
-    easyar_String * _return_value_;
-    easyar_clearException();
-    easyar_ARSceneTracker_typeName(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
-    return std_string_from_easyar_String(std::shared_ptr<easyar_String>(_return_value_, [](easyar_String * ptr) { easyar_String__dtor(ptr); }));
 }
 inline bool ARSceneTracker::attachStreamer(std::shared_ptr<FrameStreamer> arg0)
 {
-    easyar_clearException();
     auto _return_value_ = easyar_ARSceneTracker_attachStreamer(cdata_.get(), (arg0 == nullptr ? nullptr : arg0->get_cdata().get()));
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline bool ARSceneTracker::start()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_ARSceneTracker_start(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline bool ARSceneTracker::stop()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_ARSceneTracker_stop(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline std::shared_ptr<ARSceneTracker> ARSceneTracker::tryCastFromFrameFilter(std::shared_ptr<FrameFilter> v)

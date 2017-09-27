@@ -1,6 +1,6 @@
 //=============================================================================================================================
 //
-// EasyAR 2.0.0
+// EasyAR 2.1.0
 // Copyright (c) 2015-2017 VisionStar Information Technology (Shanghai) Co., Ltd. All Rights Reserved.
 // EasyAR is the registered trademark or trademark of VisionStar Information Technology (Shanghai) Co., Ltd in China
 // and other countries for the augmented reality technology developed by VisionStar Information Technology (Shanghai) Co., Ltd.
@@ -28,7 +28,6 @@ public:
     std::shared_ptr<easyar_ObjectTarget> get_cdata();
 
     ObjectTarget();
-    std::string typeName();
     bool setup(std::string path, int storageType, std::string name);
     static std::vector<std::shared_ptr<ObjectTarget>> setupAll(std::string path, int storageType);
     float scale();
@@ -109,138 +108,68 @@ inline ObjectTarget::ObjectTarget()
     cdata_(nullptr)
 {
     easyar_ObjectTarget * _return_value_;
-    easyar_clearException();
     easyar_ObjectTarget__ctor(&_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     init_cdata(std::shared_ptr<easyar_ObjectTarget>(_return_value_, [](easyar_ObjectTarget * ptr) { easyar_ObjectTarget__dtor(ptr); }));
-}
-inline std::string ObjectTarget::typeName()
-{
-    easyar_String * _return_value_;
-    easyar_clearException();
-    easyar_ObjectTarget_typeName(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
-    return std_string_from_easyar_String(std::shared_ptr<easyar_String>(_return_value_, [](easyar_String * ptr) { easyar_String__dtor(ptr); }));
 }
 inline bool ObjectTarget::setup(std::string arg0, int arg1, std::string arg2)
 {
-    easyar_clearException();
     auto _return_value_ = easyar_ObjectTarget_setup(cdata_.get(), std_string_to_easyar_String(arg0).get(), arg1, std_string_to_easyar_String(arg2).get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline std::vector<std::shared_ptr<ObjectTarget>> ObjectTarget::setupAll(std::string arg0, int arg1)
 {
     easyar_ListOfPointerOfObjectTarget * _return_value_;
-    easyar_clearException();
     easyar_ObjectTarget_setupAll(std_string_to_easyar_String(arg0).get(), arg1, &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return std_vector_from_easyar_ListOfPointerOfObjectTarget(std::shared_ptr<easyar_ListOfPointerOfObjectTarget>(_return_value_, [](easyar_ListOfPointerOfObjectTarget * ptr) { easyar_ListOfPointerOfObjectTarget__dtor(ptr); }));
 }
 inline float ObjectTarget::scale()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_ObjectTarget_scale(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline std::vector<Vec3F> ObjectTarget::boundingBox()
 {
     easyar_ListOfVec3F * _return_value_;
-    easyar_clearException();
     easyar_ObjectTarget_boundingBox(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return std_vector_from_easyar_ListOfVec3F(std::shared_ptr<easyar_ListOfVec3F>(_return_value_, [](easyar_ListOfVec3F * ptr) { easyar_ListOfVec3F__dtor(ptr); }));
 }
 inline std::vector<Vec3F> ObjectTarget::boundingBoxGL()
 {
     easyar_ListOfVec3F * _return_value_;
-    easyar_clearException();
     easyar_ObjectTarget_boundingBoxGL(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return std_vector_from_easyar_ListOfVec3F(std::shared_ptr<easyar_ListOfVec3F>(_return_value_, [](easyar_ListOfVec3F * ptr) { easyar_ListOfVec3F__dtor(ptr); }));
 }
 inline bool ObjectTarget::setScale(float arg0)
 {
-    easyar_clearException();
     auto _return_value_ = easyar_ObjectTarget_setScale(cdata_.get(), arg0);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline int ObjectTarget::runtimeID()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_ObjectTarget_runtimeID(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline std::string ObjectTarget::uid()
 {
     easyar_String * _return_value_;
-    easyar_clearException();
     easyar_ObjectTarget_uid(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return std_string_from_easyar_String(std::shared_ptr<easyar_String>(_return_value_, [](easyar_String * ptr) { easyar_String__dtor(ptr); }));
 }
 inline std::string ObjectTarget::name()
 {
     easyar_String * _return_value_;
-    easyar_clearException();
     easyar_ObjectTarget_name(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return std_string_from_easyar_String(std::shared_ptr<easyar_String>(_return_value_, [](easyar_String * ptr) { easyar_String__dtor(ptr); }));
 }
 inline std::string ObjectTarget::meta()
 {
     easyar_String * _return_value_;
-    easyar_clearException();
     easyar_ObjectTarget_meta(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return std_string_from_easyar_String(std::shared_ptr<easyar_String>(_return_value_, [](easyar_String * ptr) { easyar_String__dtor(ptr); }));
 }
 inline void ObjectTarget::setMeta(std::string arg0)
 {
     easyar_ObjectTarget_setMeta(cdata_.get(), std_string_to_easyar_String(arg0).get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
 }
 inline std::shared_ptr<ObjectTarget> ObjectTarget::tryCastFromTarget(std::shared_ptr<Target> v)
 {

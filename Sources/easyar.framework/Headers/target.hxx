@@ -1,6 +1,6 @@
 //=============================================================================================================================
 //
-// EasyAR 2.0.0
+// EasyAR 2.1.0
 // Copyright (c) 2015-2017 VisionStar Information Technology (Shanghai) Co., Ltd. All Rights Reserved.
 // EasyAR is the registered trademark or trademark of VisionStar Information Technology (Shanghai) Co., Ltd in China
 // and other countries for the augmented reality technology developed by VisionStar Information Technology (Shanghai) Co., Ltd.
@@ -28,7 +28,6 @@ public:
     const easyar_Target * get_cdata() const;
     easyar_Target * get_cdata();
 
-    void typeName(/* OUT */ String * * Return);
     int runtimeID();
     void uid(/* OUT */ String * * Return);
     void name(/* OUT */ String * * Return);
@@ -51,7 +50,6 @@ public:
     easyar_TargetInstance * get_cdata();
 
     TargetInstance();
-    void typeName(/* OUT */ String * * Return);
     TargetStatus status();
     void target(/* OUT */ Target * * Return);
     Matrix34F pose();
@@ -103,16 +101,6 @@ inline easyar_Target * Target::get_cdata()
 inline void Target::init_cdata(easyar_Target * cdata)
 {
     cdata_ = cdata;
-}
-inline void Target::typeName(/* OUT */ String * * Return)
-{
-    if (cdata_ == NULL) {
-        *Return = NULL;
-        return;
-    }
-    easyar_String * _return_value_ = NULL;
-    easyar_Target_typeName(cdata_, &_return_value_);
-    *Return = (_return_value_) == NULL ? NULL : new String(_return_value_);
 }
 inline int Target::runtimeID()
 {
@@ -201,16 +189,6 @@ inline TargetInstance::TargetInstance()
     easyar_TargetInstance * _return_value_ = NULL;
     easyar_TargetInstance__ctor(&_return_value_);
     init_cdata(_return_value_);
-}
-inline void TargetInstance::typeName(/* OUT */ String * * Return)
-{
-    if (cdata_ == NULL) {
-        *Return = NULL;
-        return;
-    }
-    easyar_String * _return_value_ = NULL;
-    easyar_TargetInstance_typeName(cdata_, &_return_value_);
-    *Return = (_return_value_) == NULL ? NULL : new String(_return_value_);
 }
 inline TargetStatus TargetInstance::status()
 {

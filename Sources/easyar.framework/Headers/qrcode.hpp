@@ -1,6 +1,6 @@
 //=============================================================================================================================
 //
-// EasyAR 2.0.0
+// EasyAR 2.1.0
 // Copyright (c) 2015-2017 VisionStar Information Technology (Shanghai) Co., Ltd. All Rights Reserved.
 // EasyAR is the registered trademark or trademark of VisionStar Information Technology (Shanghai) Co., Ltd in China
 // and other countries for the augmented reality technology developed by VisionStar Information Technology (Shanghai) Co., Ltd.
@@ -28,7 +28,6 @@ public:
     std::shared_ptr<easyar_QRCodeScanner> get_cdata();
 
     QRCodeScanner();
-    std::string typeName();
     bool attachStreamer(std::shared_ptr<FrameStreamer> obj);
     bool start();
     bool stop();
@@ -89,53 +88,22 @@ inline QRCodeScanner::QRCodeScanner()
     cdata_(nullptr)
 {
     easyar_QRCodeScanner * _return_value_;
-    easyar_clearException();
     easyar_QRCodeScanner__ctor(&_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     init_cdata(std::shared_ptr<easyar_QRCodeScanner>(_return_value_, [](easyar_QRCodeScanner * ptr) { easyar_QRCodeScanner__dtor(ptr); }));
-}
-inline std::string QRCodeScanner::typeName()
-{
-    easyar_String * _return_value_;
-    easyar_clearException();
-    easyar_QRCodeScanner_typeName(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
-    return std_string_from_easyar_String(std::shared_ptr<easyar_String>(_return_value_, [](easyar_String * ptr) { easyar_String__dtor(ptr); }));
 }
 inline bool QRCodeScanner::attachStreamer(std::shared_ptr<FrameStreamer> arg0)
 {
-    easyar_clearException();
     auto _return_value_ = easyar_QRCodeScanner_attachStreamer(cdata_.get(), (arg0 == nullptr ? nullptr : arg0->get_cdata().get()));
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline bool QRCodeScanner::start()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_QRCodeScanner_start(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline bool QRCodeScanner::stop()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_QRCodeScanner_stop(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline std::shared_ptr<QRCodeScanner> QRCodeScanner::tryCastFromFrameFilter(std::shared_ptr<FrameFilter> v)

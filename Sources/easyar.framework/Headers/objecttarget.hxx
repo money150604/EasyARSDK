@@ -1,6 +1,6 @@
 //=============================================================================================================================
 //
-// EasyAR 2.0.0
+// EasyAR 2.1.0
 // Copyright (c) 2015-2017 VisionStar Information Technology (Shanghai) Co., Ltd. All Rights Reserved.
 // EasyAR is the registered trademark or trademark of VisionStar Information Technology (Shanghai) Co., Ltd in China
 // and other countries for the augmented reality technology developed by VisionStar Information Technology (Shanghai) Co., Ltd.
@@ -30,7 +30,6 @@ public:
     easyar_ObjectTarget * get_cdata();
 
     ObjectTarget();
-    void typeName(/* OUT */ String * * Return);
     bool setup(String * path, int storageType, String * name);
     static void setupAll(String * path, int storageType, /* OUT */ ListOfPointerOfObjectTarget * * Return);
     float scale();
@@ -149,16 +148,6 @@ inline ObjectTarget::ObjectTarget()
     easyar_ObjectTarget * _return_value_ = NULL;
     easyar_ObjectTarget__ctor(&_return_value_);
     init_cdata(_return_value_);
-}
-inline void ObjectTarget::typeName(/* OUT */ String * * Return)
-{
-    if (cdata_ == NULL) {
-        *Return = NULL;
-        return;
-    }
-    easyar_String * _return_value_ = NULL;
-    easyar_ObjectTarget_typeName(cdata_, &_return_value_);
-    *Return = (_return_value_) == NULL ? NULL : new String(_return_value_);
 }
 inline bool ObjectTarget::setup(String * arg0, int arg1, String * arg2)
 {

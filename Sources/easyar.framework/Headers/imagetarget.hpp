@@ -1,6 +1,6 @@
 //=============================================================================================================================
 //
-// EasyAR 2.0.0
+// EasyAR 2.1.0
 // Copyright (c) 2015-2017 VisionStar Information Technology (Shanghai) Co., Ltd. All Rights Reserved.
 // EasyAR is the registered trademark or trademark of VisionStar Information Technology (Shanghai) Co., Ltd in China
 // and other countries for the augmented reality technology developed by VisionStar Information Technology (Shanghai) Co., Ltd.
@@ -28,7 +28,6 @@ public:
     std::shared_ptr<easyar_ImageTarget> get_cdata();
 
     ImageTarget();
-    std::string typeName();
     bool setup(std::string path, int storageType, std::string name);
     static std::vector<std::shared_ptr<ImageTarget>> setupAll(std::string path, int storageType);
     Vec2F size();
@@ -109,127 +108,62 @@ inline ImageTarget::ImageTarget()
     cdata_(nullptr)
 {
     easyar_ImageTarget * _return_value_;
-    easyar_clearException();
     easyar_ImageTarget__ctor(&_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     init_cdata(std::shared_ptr<easyar_ImageTarget>(_return_value_, [](easyar_ImageTarget * ptr) { easyar_ImageTarget__dtor(ptr); }));
-}
-inline std::string ImageTarget::typeName()
-{
-    easyar_String * _return_value_;
-    easyar_clearException();
-    easyar_ImageTarget_typeName(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
-    return std_string_from_easyar_String(std::shared_ptr<easyar_String>(_return_value_, [](easyar_String * ptr) { easyar_String__dtor(ptr); }));
 }
 inline bool ImageTarget::setup(std::string arg0, int arg1, std::string arg2)
 {
-    easyar_clearException();
     auto _return_value_ = easyar_ImageTarget_setup(cdata_.get(), std_string_to_easyar_String(arg0).get(), arg1, std_string_to_easyar_String(arg2).get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline std::vector<std::shared_ptr<ImageTarget>> ImageTarget::setupAll(std::string arg0, int arg1)
 {
     easyar_ListOfPointerOfImageTarget * _return_value_;
-    easyar_clearException();
     easyar_ImageTarget_setupAll(std_string_to_easyar_String(arg0).get(), arg1, &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return std_vector_from_easyar_ListOfPointerOfImageTarget(std::shared_ptr<easyar_ListOfPointerOfImageTarget>(_return_value_, [](easyar_ListOfPointerOfImageTarget * ptr) { easyar_ListOfPointerOfImageTarget__dtor(ptr); }));
 }
 inline Vec2F ImageTarget::size()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_ImageTarget_size(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return Vec2F{{{_return_value_.data[0], _return_value_.data[1]}}};
 }
 inline bool ImageTarget::setSize(Vec2F arg0)
 {
-    easyar_clearException();
     auto _return_value_ = easyar_ImageTarget_setSize(cdata_.get(), easyar_Vec2F{{arg0.data[0], arg0.data[1]}});
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline std::vector<std::shared_ptr<Image>> ImageTarget::images()
 {
     easyar_ListOfPointerOfImage * _return_value_;
-    easyar_clearException();
     easyar_ImageTarget_images(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return std_vector_from_easyar_ListOfPointerOfImage(std::shared_ptr<easyar_ListOfPointerOfImage>(_return_value_, [](easyar_ListOfPointerOfImage * ptr) { easyar_ListOfPointerOfImage__dtor(ptr); }));
 }
 inline int ImageTarget::runtimeID()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_ImageTarget_runtimeID(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline std::string ImageTarget::uid()
 {
     easyar_String * _return_value_;
-    easyar_clearException();
     easyar_ImageTarget_uid(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return std_string_from_easyar_String(std::shared_ptr<easyar_String>(_return_value_, [](easyar_String * ptr) { easyar_String__dtor(ptr); }));
 }
 inline std::string ImageTarget::name()
 {
     easyar_String * _return_value_;
-    easyar_clearException();
     easyar_ImageTarget_name(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return std_string_from_easyar_String(std::shared_ptr<easyar_String>(_return_value_, [](easyar_String * ptr) { easyar_String__dtor(ptr); }));
 }
 inline std::string ImageTarget::meta()
 {
     easyar_String * _return_value_;
-    easyar_clearException();
     easyar_ImageTarget_meta(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return std_string_from_easyar_String(std::shared_ptr<easyar_String>(_return_value_, [](easyar_String * ptr) { easyar_String__dtor(ptr); }));
 }
 inline void ImageTarget::setMeta(std::string arg0)
 {
     easyar_ImageTarget_setMeta(cdata_.get(), std_string_to_easyar_String(arg0).get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
 }
 inline std::shared_ptr<ImageTarget> ImageTarget::tryCastFromTarget(std::shared_ptr<Target> v)
 {

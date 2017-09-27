@@ -1,6 +1,6 @@
 //=============================================================================================================================
 //
-// EasyAR 2.0.0
+// EasyAR 2.1.0
 // Copyright (c) 2015-2017 VisionStar Information Technology (Shanghai) Co., Ltd. All Rights Reserved.
 // EasyAR is the registered trademark or trademark of VisionStar Information Technology (Shanghai) Co., Ltd in China
 // and other countries for the augmented reality technology developed by VisionStar Information Technology (Shanghai) Co., Ltd.
@@ -27,7 +27,6 @@ public:
     std::shared_ptr<easyar_Recorder> get_cdata();
 
     Recorder();
-    std::string typeName();
     void setOutputFile(std::string path);
     void setInputTexture(void * texPtr, int width, int height);
     void requestPermissions(std::function<void(PermissionStatus, std::string)> permissionCallback);
@@ -62,7 +61,6 @@ static inline easyar_FunctorOfVoidFromRecordStatusAndString FunctorOfVoidFromRec
 
 }
 
-
 #endif
 
 #ifndef __IMPLEMENTATION_EASYAR_RECORDER_HPP__
@@ -96,156 +94,74 @@ inline Recorder::Recorder()
     cdata_(nullptr)
 {
     easyar_Recorder * _return_value_;
-    easyar_clearException();
     easyar_Recorder__ctor(&_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     init_cdata(std::shared_ptr<easyar_Recorder>(_return_value_, [](easyar_Recorder * ptr) { easyar_Recorder__dtor(ptr); }));
-}
-inline std::string Recorder::typeName()
-{
-    easyar_String * _return_value_;
-    easyar_clearException();
-    easyar_Recorder_typeName(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
-    return std_string_from_easyar_String(std::shared_ptr<easyar_String>(_return_value_, [](easyar_String * ptr) { easyar_String__dtor(ptr); }));
 }
 inline void Recorder::setOutputFile(std::string arg0)
 {
     easyar_Recorder_setOutputFile(cdata_.get(), std_string_to_easyar_String(arg0).get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
 }
 inline void Recorder::setInputTexture(void * arg0, int arg1, int arg2)
 {
     easyar_Recorder_setInputTexture(cdata_.get(), arg0, arg1, arg2);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
 }
 inline void Recorder::requestPermissions(std::function<void(PermissionStatus, std::string)> arg0)
 {
     easyar_Recorder_requestPermissions(cdata_.get(), FunctorOfVoidFromPermissionStatusAndString_to_c(arg0));
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
 }
 inline bool Recorder::open(std::function<void(RecordStatus, std::string)> arg0)
 {
-    easyar_clearException();
     auto _return_value_ = easyar_Recorder_open(cdata_.get(), FunctorOfVoidFromRecordStatusAndString_to_c(arg0));
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline void Recorder::start()
 {
     easyar_Recorder_start(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
 }
 inline void Recorder::updateFrame()
 {
     easyar_Recorder_updateFrame(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
 }
 inline void Recorder::stop()
 {
     easyar_Recorder_stop(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
 }
 inline void Recorder::close()
 {
     easyar_Recorder_close(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
 }
 inline bool Recorder::setProfile(RecordProfile arg0)
 {
-    easyar_clearException();
     auto _return_value_ = easyar_Recorder_setProfile(cdata_.get(), static_cast<easyar_RecordProfile>(arg0));
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline void Recorder::setVideoSize(RecordVideoSize arg0)
 {
     easyar_Recorder_setVideoSize(cdata_.get(), static_cast<easyar_RecordVideoSize>(arg0));
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
 }
 inline void Recorder::setVideoBitrate(int arg0)
 {
     easyar_Recorder_setVideoBitrate(cdata_.get(), arg0);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
 }
 inline void Recorder::setChannelCount(int arg0)
 {
     easyar_Recorder_setChannelCount(cdata_.get(), arg0);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
 }
 inline void Recorder::setAudioSampleRate(int arg0)
 {
     easyar_Recorder_setAudioSampleRate(cdata_.get(), arg0);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
 }
 inline void Recorder::setAudioBitrate(int arg0)
 {
     easyar_Recorder_setAudioBitrate(cdata_.get(), arg0);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
 }
 inline void Recorder::setVideoOrientation(RecordVideoOrientation arg0)
 {
     easyar_Recorder_setVideoOrientation(cdata_.get(), static_cast<easyar_RecordVideoOrientation>(arg0));
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
 }
 inline void Recorder::setZoomMode(RecordZoomMode arg0)
 {
     easyar_Recorder_setZoomMode(cdata_.get(), static_cast<easyar_RecordZoomMode>(arg0));
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
 }
 
 #ifndef __IMPLEMENTATION_EASYAR_FUNCTOROFVOIDFROMPERMISSIONSTATUSANDSTRING__

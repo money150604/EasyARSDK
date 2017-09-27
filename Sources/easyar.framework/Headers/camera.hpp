@@ -1,6 +1,6 @@
 //=============================================================================================================================
 //
-// EasyAR 2.0.0
+// EasyAR 2.1.0
 // Copyright (c) 2015-2017 VisionStar Information Technology (Shanghai) Co., Ltd. All Rights Reserved.
 // EasyAR is the registered trademark or trademark of VisionStar Information Technology (Shanghai) Co., Ltd in China
 // and other countries for the augmented reality technology developed by VisionStar Information Technology (Shanghai) Co., Ltd.
@@ -27,7 +27,6 @@ public:
     std::shared_ptr<easyar_CameraCalibration> get_cdata();
 
     CameraCalibration();
-    std::string typeName();
     Vec2I size();
     Vec2F focalLength();
     Vec2F principalPoint();
@@ -49,7 +48,6 @@ public:
     std::shared_ptr<easyar_CameraDevice> get_cdata();
 
     CameraDevice();
-    std::string typeName();
     bool start();
     bool stop();
     void requestPermissions(std::function<void(PermissionStatus, std::string)> permissionCallback);
@@ -83,7 +81,6 @@ static inline easyar_FunctorOfVoidFromPermissionStatusAndString FunctorOfVoidFro
 #endif
 
 }
-
 
 #endif
 
@@ -120,83 +117,37 @@ inline CameraCalibration::CameraCalibration()
     cdata_(nullptr)
 {
     easyar_CameraCalibration * _return_value_;
-    easyar_clearException();
     easyar_CameraCalibration__ctor(&_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     init_cdata(std::shared_ptr<easyar_CameraCalibration>(_return_value_, [](easyar_CameraCalibration * ptr) { easyar_CameraCalibration__dtor(ptr); }));
-}
-inline std::string CameraCalibration::typeName()
-{
-    easyar_String * _return_value_;
-    easyar_clearException();
-    easyar_CameraCalibration_typeName(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
-    return std_string_from_easyar_String(std::shared_ptr<easyar_String>(_return_value_, [](easyar_String * ptr) { easyar_String__dtor(ptr); }));
 }
 inline Vec2I CameraCalibration::size()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraCalibration_size(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return Vec2I{{{_return_value_.data[0], _return_value_.data[1]}}};
 }
 inline Vec2F CameraCalibration::focalLength()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraCalibration_focalLength(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return Vec2F{{{_return_value_.data[0], _return_value_.data[1]}}};
 }
 inline Vec2F CameraCalibration::principalPoint()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraCalibration_principalPoint(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return Vec2F{{{_return_value_.data[0], _return_value_.data[1]}}};
 }
 inline Vec4F CameraCalibration::distortionParameters()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraCalibration_distortionParameters(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return Vec4F{{{_return_value_.data[0], _return_value_.data[1], _return_value_.data[2], _return_value_.data[3]}}};
 }
 inline int CameraCalibration::rotation()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraCalibration_rotation(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline Matrix44F CameraCalibration::projectionGL(float arg0, float arg1)
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraCalibration_projectionGL(cdata_.get(), arg0, arg1);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return Matrix44F{{{_return_value_.data[0], _return_value_.data[1], _return_value_.data[2], _return_value_.data[3], _return_value_.data[4], _return_value_.data[5], _return_value_.data[6], _return_value_.data[7], _return_value_.data[8], _return_value_.data[9], _return_value_.data[10], _return_value_.data[11], _return_value_.data[12], _return_value_.data[13], _return_value_.data[14], _return_value_.data[15]}}};
 }
 
@@ -224,248 +175,120 @@ inline CameraDevice::CameraDevice()
     cdata_(nullptr)
 {
     easyar_CameraDevice * _return_value_;
-    easyar_clearException();
     easyar_CameraDevice__ctor(&_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     init_cdata(std::shared_ptr<easyar_CameraDevice>(_return_value_, [](easyar_CameraDevice * ptr) { easyar_CameraDevice__dtor(ptr); }));
-}
-inline std::string CameraDevice::typeName()
-{
-    easyar_String * _return_value_;
-    easyar_clearException();
-    easyar_CameraDevice_typeName(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
-    return std_string_from_easyar_String(std::shared_ptr<easyar_String>(_return_value_, [](easyar_String * ptr) { easyar_String__dtor(ptr); }));
 }
 inline bool CameraDevice::start()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraDevice_start(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline bool CameraDevice::stop()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraDevice_stop(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline void CameraDevice::requestPermissions(std::function<void(PermissionStatus, std::string)> arg0)
 {
     easyar_CameraDevice_requestPermissions(cdata_.get(), FunctorOfVoidFromPermissionStatusAndString_to_c(arg0));
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
 }
 inline bool CameraDevice::open(int arg0)
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraDevice_open(cdata_.get(), arg0);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline bool CameraDevice::close()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraDevice_close(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline bool CameraDevice::isOpened()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraDevice_isOpened(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline void CameraDevice::setHorizontalFlip(bool arg0)
 {
     easyar_CameraDevice_setHorizontalFlip(cdata_.get(), arg0);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
 }
 inline float CameraDevice::frameRate()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraDevice_frameRate(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline int CameraDevice::supportedFrameRateCount()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraDevice_supportedFrameRateCount(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline float CameraDevice::supportedFrameRate(int arg0)
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraDevice_supportedFrameRate(cdata_.get(), arg0);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline bool CameraDevice::setFrameRate(float arg0)
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraDevice_setFrameRate(cdata_.get(), arg0);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline Vec2I CameraDevice::size()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraDevice_size(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return Vec2I{{{_return_value_.data[0], _return_value_.data[1]}}};
 }
 inline int CameraDevice::supportedSizeCount()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraDevice_supportedSizeCount(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline Vec2I CameraDevice::supportedSize(int arg0)
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraDevice_supportedSize(cdata_.get(), arg0);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return Vec2I{{{_return_value_.data[0], _return_value_.data[1]}}};
 }
 inline bool CameraDevice::setSize(Vec2I arg0)
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraDevice_setSize(cdata_.get(), easyar_Vec2I{{arg0.data[0], arg0.data[1]}});
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline float CameraDevice::zoomScale()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraDevice_zoomScale(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline void CameraDevice::setZoomScale(float arg0)
 {
     easyar_CameraDevice_setZoomScale(cdata_.get(), arg0);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
 }
 inline float CameraDevice::minZoomScale()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraDevice_minZoomScale(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline float CameraDevice::maxZoomScale()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraDevice_maxZoomScale(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline std::shared_ptr<CameraCalibration> CameraDevice::cameraCalibration()
 {
     easyar_CameraCalibration * _return_value_;
-    easyar_clearException();
     easyar_CameraDevice_cameraCalibration(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return (_return_value_ == nullptr ? nullptr : std::make_shared<CameraCalibration>(std::shared_ptr<easyar_CameraCalibration>(_return_value_, [](easyar_CameraCalibration * ptr) { easyar_CameraCalibration__dtor(ptr); })));
 }
 inline bool CameraDevice::setFlashTorchMode(bool arg0)
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraDevice_setFlashTorchMode(cdata_.get(), arg0);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline bool CameraDevice::setFocusMode(CameraDeviceFocusMode arg0)
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraDevice_setFocusMode(cdata_.get(), static_cast<easyar_CameraDeviceFocusMode>(arg0));
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline Matrix44F CameraDevice::projectionGL(float arg0, float arg1)
 {
-    easyar_clearException();
     auto _return_value_ = easyar_CameraDevice_projectionGL(cdata_.get(), arg0, arg1);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return Matrix44F{{{_return_value_.data[0], _return_value_.data[1], _return_value_.data[2], _return_value_.data[3], _return_value_.data[4], _return_value_.data[5], _return_value_.data[6], _return_value_.data[7], _return_value_.data[8], _return_value_.data[9], _return_value_.data[10], _return_value_.data[11], _return_value_.data[12], _return_value_.data[13], _return_value_.data[14], _return_value_.data[15]}}};
 }
 

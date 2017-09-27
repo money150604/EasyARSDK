@@ -1,6 +1,6 @@
 //=============================================================================================================================
 //
-// EasyAR 2.0.0
+// EasyAR 2.1.0
 // Copyright (c) 2015-2017 VisionStar Information Technology (Shanghai) Co., Ltd. All Rights Reserved.
 // EasyAR is the registered trademark or trademark of VisionStar Information Technology (Shanghai) Co., Ltd in China
 // and other countries for the augmented reality technology developed by VisionStar Information Technology (Shanghai) Co., Ltd.
@@ -26,9 +26,6 @@ const char * easyar_String_end(const easyar_String * This);
 void easyar_String_copy(const easyar_String * This, /* OUT */ easyar_String * * Return);
 void easyar_String__dtor(easyar_String * This);
 
-void easyar_clearException();
-const char * easyar_tryGetException();
-
 /// <summary>
 /// class
 /// extends Target
@@ -53,6 +50,11 @@ typedef enum
 /// extends FrameFilter
 /// </summary>
 typedef struct { char _placeHolder_; } easyar_CloudRecognizer;
+
+/// <summary>
+/// class
+/// </summary>
+typedef struct { char _placeHolder_; } easyar_Buffer;
 
 /// <summary>
 /// class

@@ -1,6 +1,6 @@
 //=============================================================================================================================
 //
-// EasyAR 2.0.0
+// EasyAR 2.1.0
 // Copyright (c) 2015-2017 VisionStar Information Technology (Shanghai) Co., Ltd. All Rights Reserved.
 // EasyAR is the registered trademark or trademark of VisionStar Information Technology (Shanghai) Co., Ltd in China
 // and other countries for the augmented reality technology developed by VisionStar Information Technology (Shanghai) Co., Ltd.
@@ -17,7 +17,6 @@ extern "C" {
 #endif
 
 void easyar_Recorder__ctor(/* OUT */ easyar_Recorder * * Return);
-void easyar_Recorder_typeName(const easyar_Recorder * This, /* OUT */ easyar_String * * Return);
 void easyar_Recorder_setOutputFile(easyar_Recorder * This, easyar_String * path);
 void easyar_Recorder_setInputTexture(easyar_Recorder * This, void * texPtr, int width, int height);
 void easyar_Recorder_requestPermissions(easyar_Recorder * This, easyar_FunctorOfVoidFromPermissionStatusAndString permissionCallback);
@@ -36,6 +35,7 @@ void easyar_Recorder_setVideoOrientation(easyar_Recorder * This, easyar_RecordVi
 void easyar_Recorder_setZoomMode(easyar_Recorder * This, easyar_RecordZoomMode mode);
 void easyar_Recorder__dtor(easyar_Recorder * This);
 void easyar_Recorder__retain(const easyar_Recorder * This, /* OUT */ easyar_Recorder * * Return);
+const char * easyar_Recorder__typeName(const easyar_Recorder * This);
 
 #ifdef __cplusplus
 }

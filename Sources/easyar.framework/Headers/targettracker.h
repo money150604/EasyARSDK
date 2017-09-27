@@ -1,6 +1,6 @@
 //=============================================================================================================================
 //
-// EasyAR 2.0.0
+// EasyAR 2.1.0
 // Copyright (c) 2015-2017 VisionStar Information Technology (Shanghai) Co., Ltd. All Rights Reserved.
 // EasyAR is the registered trademark or trademark of VisionStar Information Technology (Shanghai) Co., Ltd in China
 // and other countries for the augmented reality technology developed by VisionStar Information Technology (Shanghai) Co., Ltd.
@@ -28,10 +28,11 @@ bool easyar_TargetTracker_start(easyar_TargetTracker * This);
 bool easyar_TargetTracker_stop(easyar_TargetTracker * This);
 void easyar_TargetTracker__dtor(easyar_TargetTracker * This);
 void easyar_TargetTracker__retain(const easyar_TargetTracker * This, /* OUT */ easyar_TargetTracker * * Return);
+const char * easyar_TargetTracker__typeName(const easyar_TargetTracker * This);
 void easyar_castTargetTrackerToFrameFilter(const easyar_TargetTracker * This, /* OUT */ easyar_FrameFilter * * Return);
 void easyar_tryCastFrameFilterToTargetTracker(const easyar_FrameFilter * This, /* OUT */ easyar_TargetTracker * * Return);
 
-void easyar_ListOfPointerOfTarget__ctor(easyar_Target * * begin, easyar_Target * * end, /* OUT */ easyar_ListOfPointerOfTarget * * Return);
+void easyar_ListOfPointerOfTarget__ctor(easyar_Target * const * begin, easyar_Target * const * end, /* OUT */ easyar_ListOfPointerOfTarget * * Return);
 void easyar_ListOfPointerOfTarget__dtor(easyar_ListOfPointerOfTarget * This);
 void easyar_ListOfPointerOfTarget_copy(const easyar_ListOfPointerOfTarget * This, /* OUT */ easyar_ListOfPointerOfTarget * * Return);
 int easyar_ListOfPointerOfTarget_size(const easyar_ListOfPointerOfTarget * This);

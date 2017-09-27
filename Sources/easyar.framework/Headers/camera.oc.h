@@ -1,6 +1,6 @@
 //=============================================================================================================================
 //
-// EasyAR 2.0.0
+// EasyAR 2.1.0
 // Copyright (c) 2015-2017 VisionStar Information Technology (Shanghai) Co., Ltd. All Rights Reserved.
 // EasyAR is the registered trademark or trademark of VisionStar Information Technology (Shanghai) Co., Ltd in China
 // and other countries for the augmented reality technology developed by VisionStar Information Technology (Shanghai) Co., Ltd.
@@ -12,7 +12,6 @@
 @interface easyar_CameraCalibration : easyar_RefBase
 
 + (easyar_CameraCalibration *) create;
-- (NSString *)typeName;
 - (easyar_Vec2I *)size;
 - (easyar_Vec2F *)focalLength;
 - (easyar_Vec2F *)principalPoint;
@@ -25,7 +24,6 @@
 @interface easyar_CameraDevice : easyar_RefBase
 
 + (easyar_CameraDevice *) create;
-- (NSString *)typeName;
 - (bool)start;
 - (bool)stop;
 - (void)requestPermissions:(void (^)(easyar_PermissionStatus status, NSString * value))permissionCallback;

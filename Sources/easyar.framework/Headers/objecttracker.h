@@ -1,6 +1,6 @@
 //=============================================================================================================================
 //
-// EasyAR 2.0.0
+// EasyAR 2.1.0
 // Copyright (c) 2015-2017 VisionStar Information Technology (Shanghai) Co., Ltd. All Rights Reserved.
 // EasyAR is the registered trademark or trademark of VisionStar Information Technology (Shanghai) Co., Ltd in China
 // and other countries for the augmented reality technology developed by VisionStar Information Technology (Shanghai) Co., Ltd.
@@ -17,7 +17,6 @@ extern "C" {
 #endif
 
 void easyar_ObjectTracker__ctor(/* OUT */ easyar_ObjectTracker * * Return);
-void easyar_ObjectTracker_typeName(const easyar_ObjectTracker * This, /* OUT */ easyar_String * * Return);
 void easyar_ObjectTracker_loadTarget(easyar_ObjectTracker * This, easyar_Target * target, easyar_FunctorOfVoidFromPointerOfTargetAndBool callback);
 void easyar_ObjectTracker_unloadTarget(easyar_ObjectTracker * This, easyar_Target * target, easyar_FunctorOfVoidFromPointerOfTargetAndBool callback);
 bool easyar_ObjectTracker_loadTargetBlocked(easyar_ObjectTracker * This, easyar_Target * target);
@@ -30,12 +29,13 @@ bool easyar_ObjectTracker_start(easyar_ObjectTracker * This);
 bool easyar_ObjectTracker_stop(easyar_ObjectTracker * This);
 void easyar_ObjectTracker__dtor(easyar_ObjectTracker * This);
 void easyar_ObjectTracker__retain(const easyar_ObjectTracker * This, /* OUT */ easyar_ObjectTracker * * Return);
+const char * easyar_ObjectTracker__typeName(const easyar_ObjectTracker * This);
 void easyar_castObjectTrackerToFrameFilter(const easyar_ObjectTracker * This, /* OUT */ easyar_FrameFilter * * Return);
 void easyar_tryCastFrameFilterToObjectTracker(const easyar_FrameFilter * This, /* OUT */ easyar_ObjectTracker * * Return);
 void easyar_castObjectTrackerToTargetTracker(const easyar_ObjectTracker * This, /* OUT */ easyar_TargetTracker * * Return);
 void easyar_tryCastTargetTrackerToObjectTracker(const easyar_TargetTracker * This, /* OUT */ easyar_ObjectTracker * * Return);
 
-void easyar_ListOfPointerOfTarget__ctor(easyar_Target * * begin, easyar_Target * * end, /* OUT */ easyar_ListOfPointerOfTarget * * Return);
+void easyar_ListOfPointerOfTarget__ctor(easyar_Target * const * begin, easyar_Target * const * end, /* OUT */ easyar_ListOfPointerOfTarget * * Return);
 void easyar_ListOfPointerOfTarget__dtor(easyar_ListOfPointerOfTarget * This);
 void easyar_ListOfPointerOfTarget_copy(const easyar_ListOfPointerOfTarget * This, /* OUT */ easyar_ListOfPointerOfTarget * * Return);
 int easyar_ListOfPointerOfTarget_size(const easyar_ListOfPointerOfTarget * This);

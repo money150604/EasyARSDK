@@ -1,6 +1,6 @@
 //=============================================================================================================================
 //
-// EasyAR 2.0.0
+// EasyAR 2.1.0
 // Copyright (c) 2015-2017 VisionStar Information Technology (Shanghai) Co., Ltd. All Rights Reserved.
 // EasyAR is the registered trademark or trademark of VisionStar Information Technology (Shanghai) Co., Ltd in China
 // and other countries for the augmented reality technology developed by VisionStar Information Technology (Shanghai) Co., Ltd.
@@ -28,7 +28,6 @@ public:
     std::shared_ptr<easyar_Frame> get_cdata();
 
     Frame();
-    std::string typeName();
     Vec2I size();
     double timestamp();
     int index();
@@ -106,86 +105,40 @@ inline Frame::Frame()
     cdata_(nullptr)
 {
     easyar_Frame * _return_value_;
-    easyar_clearException();
     easyar_Frame__ctor(&_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     init_cdata(std::shared_ptr<easyar_Frame>(_return_value_, [](easyar_Frame * ptr) { easyar_Frame__dtor(ptr); }));
-}
-inline std::string Frame::typeName()
-{
-    easyar_String * _return_value_;
-    easyar_clearException();
-    easyar_Frame_typeName(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
-    return std_string_from_easyar_String(std::shared_ptr<easyar_String>(_return_value_, [](easyar_String * ptr) { easyar_String__dtor(ptr); }));
 }
 inline Vec2I Frame::size()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_Frame_size(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return Vec2I{{{_return_value_.data[0], _return_value_.data[1]}}};
 }
 inline double Frame::timestamp()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_Frame_timestamp(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline int Frame::index()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_Frame_index(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline std::vector<std::shared_ptr<Image>> Frame::images()
 {
     easyar_ListOfPointerOfImage * _return_value_;
-    easyar_clearException();
     easyar_Frame_images(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return std_vector_from_easyar_ListOfPointerOfImage(std::shared_ptr<easyar_ListOfPointerOfImage>(_return_value_, [](easyar_ListOfPointerOfImage * ptr) { easyar_ListOfPointerOfImage__dtor(ptr); }));
 }
 inline std::vector<std::shared_ptr<TargetInstance>> Frame::targetInstances()
 {
     easyar_ListOfPointerOfTargetInstance * _return_value_;
-    easyar_clearException();
     easyar_Frame_targetInstances(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return std_vector_from_easyar_ListOfPointerOfTargetInstance(std::shared_ptr<easyar_ListOfPointerOfTargetInstance>(_return_value_, [](easyar_ListOfPointerOfTargetInstance * ptr) { easyar_ListOfPointerOfTargetInstance__dtor(ptr); }));
 }
 inline std::string Frame::text()
 {
     easyar_String * _return_value_;
-    easyar_clearException();
     easyar_Frame_text(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return std_string_from_easyar_String(std::shared_ptr<easyar_String>(_return_value_, [](easyar_String * ptr) { easyar_String__dtor(ptr); }));
 }
 inline std::shared_ptr<Frame> Frame::tryCastFromDrawable(std::shared_ptr<Drawable> v)

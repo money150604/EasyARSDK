@@ -1,6 +1,6 @@
 //=============================================================================================================================
 //
-// EasyAR 2.0.0
+// EasyAR 2.1.0
 // Copyright (c) 2015-2017 VisionStar Information Technology (Shanghai) Co., Ltd. All Rights Reserved.
 // EasyAR is the registered trademark or trademark of VisionStar Information Technology (Shanghai) Co., Ltd in China
 // and other countries for the augmented reality technology developed by VisionStar Information Technology (Shanghai) Co., Ltd.
@@ -28,7 +28,6 @@ public:
     std::shared_ptr<easyar_ObjectTracker> get_cdata();
 
     ObjectTracker();
-    std::string typeName();
     void loadTarget(std::shared_ptr<Target> target, std::function<void(std::shared_ptr<Target>, bool)> callback);
     void unloadTarget(std::shared_ptr<Target> target, std::function<void(std::shared_ptr<Target>, bool)> callback);
     bool loadTargetBlocked(std::shared_ptr<Target> target);
@@ -116,120 +115,56 @@ inline ObjectTracker::ObjectTracker()
     cdata_(nullptr)
 {
     easyar_ObjectTracker * _return_value_;
-    easyar_clearException();
     easyar_ObjectTracker__ctor(&_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     init_cdata(std::shared_ptr<easyar_ObjectTracker>(_return_value_, [](easyar_ObjectTracker * ptr) { easyar_ObjectTracker__dtor(ptr); }));
-}
-inline std::string ObjectTracker::typeName()
-{
-    easyar_String * _return_value_;
-    easyar_clearException();
-    easyar_ObjectTracker_typeName(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
-    return std_string_from_easyar_String(std::shared_ptr<easyar_String>(_return_value_, [](easyar_String * ptr) { easyar_String__dtor(ptr); }));
 }
 inline void ObjectTracker::loadTarget(std::shared_ptr<Target> arg0, std::function<void(std::shared_ptr<Target>, bool)> arg1)
 {
     easyar_ObjectTracker_loadTarget(cdata_.get(), (arg0 == nullptr ? nullptr : arg0->get_cdata().get()), FunctorOfVoidFromPointerOfTargetAndBool_to_c(arg1));
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
 }
 inline void ObjectTracker::unloadTarget(std::shared_ptr<Target> arg0, std::function<void(std::shared_ptr<Target>, bool)> arg1)
 {
     easyar_ObjectTracker_unloadTarget(cdata_.get(), (arg0 == nullptr ? nullptr : arg0->get_cdata().get()), FunctorOfVoidFromPointerOfTargetAndBool_to_c(arg1));
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
 }
 inline bool ObjectTracker::loadTargetBlocked(std::shared_ptr<Target> arg0)
 {
-    easyar_clearException();
     auto _return_value_ = easyar_ObjectTracker_loadTargetBlocked(cdata_.get(), (arg0 == nullptr ? nullptr : arg0->get_cdata().get()));
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline bool ObjectTracker::unloadTargetBlocked(std::shared_ptr<Target> arg0)
 {
-    easyar_clearException();
     auto _return_value_ = easyar_ObjectTracker_unloadTargetBlocked(cdata_.get(), (arg0 == nullptr ? nullptr : arg0->get_cdata().get()));
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline std::vector<std::shared_ptr<Target>> ObjectTracker::targets()
 {
     easyar_ListOfPointerOfTarget * _return_value_;
-    easyar_clearException();
     easyar_ObjectTracker_targets(cdata_.get(), &_return_value_);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return std_vector_from_easyar_ListOfPointerOfTarget(std::shared_ptr<easyar_ListOfPointerOfTarget>(_return_value_, [](easyar_ListOfPointerOfTarget * ptr) { easyar_ListOfPointerOfTarget__dtor(ptr); }));
 }
 inline bool ObjectTracker::setSimultaneousNum(int arg0)
 {
-    easyar_clearException();
     auto _return_value_ = easyar_ObjectTracker_setSimultaneousNum(cdata_.get(), arg0);
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline int ObjectTracker::simultaneousNum()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_ObjectTracker_simultaneousNum(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline bool ObjectTracker::attachStreamer(std::shared_ptr<FrameStreamer> arg0)
 {
-    easyar_clearException();
     auto _return_value_ = easyar_ObjectTracker_attachStreamer(cdata_.get(), (arg0 == nullptr ? nullptr : arg0->get_cdata().get()));
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline bool ObjectTracker::start()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_ObjectTracker_start(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline bool ObjectTracker::stop()
 {
-    easyar_clearException();
     auto _return_value_ = easyar_ObjectTracker_stop(cdata_.get());
-    auto exception = easyar_tryGetException();
-    if (exception != nullptr) {
-        throw std::runtime_error(exception);
-    }
     return _return_value_;
 }
 inline std::shared_ptr<ObjectTracker> ObjectTracker::tryCastFromFrameFilter(std::shared_ptr<FrameFilter> v)
