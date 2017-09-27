@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "EasyARSDK"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "EasyARSDK."
   s.description  = "同步更新EasyAR庫."
 
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.authors  = { 'easyar' => 'support@easyar.comm' }
 
   s.frameworks = "Accelerate", "GLKit", "AVFoundation", "CoreGraphics", "CoreImage", "CoreMedia", "CoreVideo", "OpenGLES", "QuartzCore", "UIKit", "CoreMotion"
-  s.source_files    = 'EasyARSDK', 'EasyARSDK/**/Sources/*.{.h, swift}'
+  s.source_files    = 'Sources/*'
   s.libraries = 'c++'
   s.requires_arc = true
 
